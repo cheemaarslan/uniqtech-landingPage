@@ -23,16 +23,12 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      // Web3Forms access key for the contact form. Submissions are emailed to the inbox the key was
-      // created with (info@uniqtech.om). It is meant to be public. Override with NUXT_PUBLIC_WEB3FORMS_KEY.
       web3formsKey: '9291ab3a-c377-4109-9cbe-2e54d1db8970'
     }
   },
 
-  // Light-only site, like SmartGenTech.
   ui: { colorMode: false },
 
-  // Self-hosted fonts (via @nuxt/fonts, bundled with Nuxt UI), picked up from main.css.
   fonts: {
     defaults: { weights: [400, 500, 600, 700] }
   },
@@ -41,13 +37,13 @@ export default defineNuxtConfig({
     '/images/**': { headers: { 'cache-control': 'public, max-age=86400, stale-while-revalidate=604800' } }
   },
 
-  compatibilityDate: '2026-06-30'
-
-    nitro: {
+  nitro: {
     preset: 'cloudflare_module',
     cloudflare: {
       deployConfig: true,
       nodeCompat: true
     }
   },
+
+  compatibilityDate: '2026-06-30'
 })
