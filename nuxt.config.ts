@@ -7,13 +7,13 @@ export default defineNuxtConfig({
   app: {
     head: {
       htmlAttrs: { lang: 'en' },
-      title: 'UniqTech × SmartGen | Smart city infrastructure',
+      // Title, description, Open Graph and structured data are set in app/app.vue (they need absolute URLs)
       meta: [
-        { name: 'description', content: 'UniqTech Global Solutions and SmartGen Technologies deliver intelligent transport, smart energy, smart waste, fleet management and software solutions.' },
         { name: 'theme-color', content: '#132B47' }
       ],
       link: [
         { rel: 'icon', type: 'image/png', href: '/images/logos/uniqtech.png' },
+        { rel: 'apple-touch-icon', href: '/images/logos/uniqtech.png' },
         { rel: 'preload', as: 'image', type: 'image/webp', href: '/images/hero-smart-city.webp', fetchpriority: 'high' }
       ]
     }
@@ -23,7 +23,10 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      web3formsKey: '9291ab3a-c377-4109-9cbe-2e54d1db8970'
+      web3formsKey: '9291ab3a-c377-4109-9cbe-2e54d1db8970',
+      // Live site address for canonical and share links, e.g. https://uniqtech.om (no trailing slash).
+      // Set NUXT_PUBLIC_SITE_URL in Cloudflare. If empty, the address of the incoming request is used.
+      siteUrl: ''
     }
   },
 

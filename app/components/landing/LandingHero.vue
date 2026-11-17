@@ -257,9 +257,11 @@ const progressWidth = computed(() => autoplay.value ? `${Math.min(progress.value
         </button>
       </div>
 
-      <!-- Service cards: they double as slide tabs, and the active one is highlighted -->
+      <!-- Service cards: they double as slide tabs, and the active one is highlighted.
+           All five always fit in one row: compact icon tiles with a one-word name on phones
+           and tablets, full names on desktop. -->
       <ul
-        class="mt-8 grid gap-px overflow-hidden rounded-2xl bg-white/10 sm:grid-cols-2 lg:mt-10 lg:grid-cols-5"
+        class="mt-8 grid grid-cols-5 gap-px overflow-hidden rounded-2xl bg-white/10 lg:mt-10"
         aria-label="Our services"
         @mouseenter="hoverPaused = true"
         @mouseleave="hoverPaused = false"
@@ -270,8 +272,9 @@ const progressWidth = computed(() => autoplay.value ? `${Math.min(progress.value
         >
           <button
             type="button"
-            class="group relative flex h-full w-full items-start gap-3 p-5 text-left backdrop-blur transition-colors duration-500"
+            class="group relative flex h-full w-full flex-col items-center gap-1.5 px-0.5 py-3.5 text-center backdrop-blur transition-colors duration-500 sm:py-4 lg:flex-row lg:items-start lg:gap-3 lg:p-5 lg:text-left"
             :class="service.id === activeServiceId ? 'bg-uq-600/90' : 'bg-navy-900/80 hover:bg-navy-800'"
+            :aria-label="service.name"
             :aria-pressed="service.id === activeServiceId"
             @click="showSlideFor(service.id)"
           >
@@ -280,12 +283,25 @@ const progressWidth = computed(() => autoplay.value ? `${Math.min(progress.value
               class="absolute top-0 left-0 h-0.5 bg-white"
               :style="{ width: progressWidth }"
             />
+            <!-- Featured marker on the small tiles, where "Featured solution" doesn't fit -->
+            <span
+              v-if="service.featured"
+              class="absolute top-2 right-2 size-1.5 rounded-full bg-uq-300 lg:hidden"
+              aria-hidden="true"
+            />
             <UIcon
               :name="service.icon"
-              class="mt-0.5 size-5 shrink-0 transition-colors duration-500"
+              class="size-5 shrink-0 transition-colors duration-500 lg:mt-0.5"
               :class="service.id === activeServiceId ? 'text-white' : 'text-uq-300'"
             />
-            <span>
+            <span
+              class="text-[0.6875rem] leading-tight font-medium text-white sm:text-xs lg:hidden"
+              aria-hidden="true"
+            >{{ service.shortName }}</span>
+            <span
+              class="hidden lg:block"
+              aria-hidden="true"
+            >
               <span
                 class="block text-[0.95rem] leading-snug font-medium text-white"
                 :class="{ 'group-hover:text-uq-100': service.id !== activeServiceId }"

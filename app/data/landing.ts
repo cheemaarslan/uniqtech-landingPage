@@ -6,6 +6,8 @@ export interface Service {
   // Highlighted in the hero links and services panel, with its own spotlight section
   featured?: boolean
   name: string
+  // One word for tight spaces, such as the hero's service tabs on phones
+  shortName: string
   // Short line shown in the service list
   tagline: string
   summary: string
@@ -19,6 +21,7 @@ export const services: Service[] = [
   {
     id: 'transport',
     name: 'Intelligent Transport Management System',
+    shortName: 'Transport',
     tagline: 'Monitoring, enforcement and tolling from one control centre',
     summary: 'Cameras, sensors and tolling lanes report into a single control centre, so your team sees traffic as it happens and acts on incidents in minutes, not hours.',
     points: [
@@ -34,6 +37,7 @@ export const services: Service[] = [
   {
     id: 'energy',
     name: 'Smart Energy Solutions',
+    shortName: 'Energy',
     tagline: 'Solar, battery storage and EV charging that manage themselves',
     summary: 'Solar generation and lithium-ion storage keep sites powered on and off the grid, with remote monitoring that shows output, battery health and faults in real time.',
     points: [
@@ -50,6 +54,7 @@ export const services: Service[] = [
     id: 'waste',
     featured: true,
     name: 'Smart Waste Management Systems',
+    shortName: 'Waste',
     tagline: 'Smart bins that report when they are full',
     // Copy from SmartGen's Smart Bins solution page (smartgentech.net)
     summary: 'SmartGen Smart Bins combine IoT sensors, GPS and AI to monitor waste levels in real time, so collection follows actual need instead of a fixed timetable.',
@@ -66,6 +71,7 @@ export const services: Service[] = [
   {
     id: 'fleet',
     name: 'Fleet Management Solutions',
+    shortName: 'Fleet',
     tagline: 'Vehicle tracking, driver safety and fuel control',
     summary: 'GPS tracking and in-vehicle cameras show where every vehicle is and how it is driven, helping operators cut fuel costs and prevent accidents before they happen.',
     points: [
@@ -81,6 +87,7 @@ export const services: Service[] = [
   {
     id: 'software',
     name: 'Software Solutions',
+    shortName: 'Software',
     tagline: 'Dashboards and analytics that connect every system',
     summary: 'Our software brings data from traffic, energy, waste and fleet systems into clear dashboards, so decision makers can plan with evidence rather than estimates.',
     points: [
@@ -291,7 +298,7 @@ export const heroSlides: HeroSlide[] = [
     width: 1600,
     height: 900,
     label: 'Smart Energy Solutions',
-    title: 'Clean power,',
+    title: 'Smart power,',
     titleAccent: 'always on.',
     keywords: ['Solar parks', 'Battery storage', 'Off-grid power', 'EV charging'],
     cta: 'Explore smart energy'
