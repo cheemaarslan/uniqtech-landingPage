@@ -1,6 +1,18 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
 
+/* Tailwind 4 no longer gives buttons a hand cursor, so put it back site-wide
+   (service tabs, nav buttons, modal triggers, selects) */
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  summary,
+  label[for],
+  select {
+    cursor: pointer;
+  }
+}
+
 /*
   Brand tokens (client-approved brand colours):
   - Navy  #132B47  -> navy-800, the main text and dark-section colour
