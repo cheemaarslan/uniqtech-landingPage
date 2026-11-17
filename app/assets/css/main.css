@@ -1,0 +1,148 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+/*
+  Brand tokens (client-approved brand colours):
+  - Navy  #132B47  -> navy-800, the main text and dark-section colour
+  - Teal  #009C98  -> uq-500, Nuxt UI primary (buttons, accents)
+  The other shades of each scale are derived from these two.
+  - SmartGen blue  #3A97B8  (partner accent, used only where SmartGen is named)
+*/
+@theme static {
+  --font-sans: 'IBM Plex Sans', -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Lexend', 'IBM Plex Sans', sans-serif;
+  --font-arabic: 'IBM Plex Sans Arabic', 'IBM Plex Sans', sans-serif;
+
+  --color-uq-50: #ebfbfa;
+  --color-uq-100: #cff5f2;
+  --color-uq-200: #a2ebe6;
+  --color-uq-300: #66d9d3;
+  --color-uq-400: #26bfba;
+  --color-uq-500: #009c98;
+  --color-uq-600: #007f7c;
+  --color-uq-700: #046664;
+  --color-uq-800: #085150;
+  --color-uq-900: #0b4343;
+  --color-uq-950: #002829;
+
+  --color-navy-600: #2a4d75;
+  --color-navy-700: #1d3b5d;
+  --color-navy-800: #132b47;
+  --color-navy-900: #0c1d31;
+  --color-navy-950: #07121f;
+
+  --color-paper: #f3f6f7;
+  --color-sg: #3a97b8;
+}
+
+:root {
+  --ui-primary: var(--ui-color-primary-500);
+  --ui-text: var(--color-navy-800);
+  --ui-text-highlighted: var(--color-navy-900);
+  --header-height: 4.5rem;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Anchored sections land below the sticky header */
+  scroll-padding-top: var(--header-height);
+}
+
+body {
+  background: #fff;
+  color: var(--color-navy-800);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+/*
+  Type scale. Every heading on the site uses one of these, so a role always has the same
+  size, weight and line height. Body copy uses Tailwind's text-base (16px), lead paragraphs
+  text-lg (18px) and small print text-sm (14px).
+*/
+@utility heading-hero {
+  font-family: var(--font-display);
+  font-size: 2.25rem;
+  line-height: 1.1;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+
+  @media (width >= 40rem) {
+    font-size: 3rem;
+  }
+
+  @media (width >= 64rem) {
+    font-size: 3.75rem;
+  }
+}
+
+@utility heading-section {
+  font-family: var(--font-display);
+  font-size: 1.875rem;
+  line-height: 1.15;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+
+  @media (width >= 40rem) {
+    font-size: 2.75rem;
+  }
+}
+
+@utility heading-panel {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  line-height: 1.25;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+
+  @media (width >= 40rem) {
+    font-size: 1.875rem;
+  }
+}
+
+@utility heading-card {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  line-height: 1.35;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+@utility heading-item {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  line-height: 1.4;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-uq-400);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
