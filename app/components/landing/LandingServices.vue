@@ -9,16 +9,6 @@ const proof = computed(() => projects.find(p => p.service === active.value.id))
 
 const tabRefs = ref<HTMLButtonElement[]>([])
 
-// On small screens the list scrolls sideways: keep the selected service in view,
-// including when it was chosen from the hero or footer links.
-watch(activeService, (id) => {
-  const tab = tabRefs.value[services.findIndex(s => s.id === id)]
-  const list = tab?.parentElement
-  if (!tab || !list || list.scrollWidth <= list.clientWidth) return
-  const left = list.scrollLeft + tab.getBoundingClientRect().left - list.getBoundingClientRect().left - 12
-  list.scrollTo({ left, behavior: 'smooth' })
-}, { flush: 'post' })
-
 // Arrow keys move between tabs (WAI-ARIA tabs pattern, automatic activation)
 function onKeydown(event: KeyboardEvent, index: number) {
   const keys: Record<string, number> = {
@@ -62,13 +52,14 @@ function discuss() {
 
       <div class="mt-12 overflow-hidden rounded-3xl border border-navy-800/10 bg-white lg:grid lg:grid-cols-[minmax(0,23rem)_1fr]">
         <!-- Service list. Every service is drawn as a card so it is clear they are all clickable;
-             the selected one gets a teal outline and side bar rather than a heavy fill. -->
-        <div class="border-b border-navy-800/10 bg-paper/60 p-3 lg:border-r lg:border-b-0">
+             the selected one gets a teal outline and side bar rather than a heavy fill.
+             Phones and tablets: all five side by side as compact icon tiles (no sideways scrolling).
+             Desktop: a vertical list with full names and taglines. -->
+        <div class="border-b border-navy-800/10 bg-paper/60 p-2 sm:p-3 lg:border-r lg:border-b-0">
           <div
             role="tablist"
             aria-label="Services"
-            aria-orientation="vertical"
-            class="flex snap-x gap-2 overflow-x-auto pb-1 lg:flex-col lg:overflow-visible lg:pb-0"
+            class="grid grid-cols-5 gap-1.5 sm:gap-2 lg:grid-cols-1"
           >
             <button
               v-for="(service, index) in services"
@@ -77,10 +68,11 @@ function discuss() {
               ref="tabRefs"
               type="button"
               role="tab"
+              :aria-label="service.name"
               :aria-selected="service.id === active.id"
               :aria-controls="`panel-${service.id}`"
               :tabindex="service.id === active.id ? 0 : -1"
-              class="group relative flex w-64 shrink-0 snap-start items-start gap-3 overflow-hidden rounded-2xl border bg-white p-4 text-left text-navy-800 transition lg:w-auto"
+              class="group relative flex min-w-0 flex-col items-center gap-1.5 overflow-hidden rounded-xl border bg-white px-0.5 py-3 text-center text-navy-800 transition sm:rounded-2xl sm:py-4 lg:flex-row lg:items-start lg:gap-3 lg:p-4 lg:text-left"
               :class="service.id === active.id
                 ? 'border-uq-500 shadow-md shadow-uq-500/10 ring-1 ring-uq-500'
                 : 'border-navy-800/10 hover:border-uq-300 hover:shadow-sm'"
@@ -88,12 +80,18 @@ function discuss() {
               @keydown="onKeydown($event, index)"
             >
               <span
-                class="absolute inset-y-0 left-0 w-1 transition-colors"
+                class="absolute inset-y-0 left-0 hidden w-1 transition-colors lg:block"
                 :class="service.id === active.id ? 'bg-uq-500' : 'bg-transparent'"
                 aria-hidden="true"
               />
+              <!-- Featured marker on the small tiles, where the "Featured" badge doesn't fit -->
               <span
-                class="mt-0.5 flex size-9 shrink-0 items-center justify-center rounded-xl transition-colors"
+                v-if="service.featured"
+                class="absolute top-1.5 right-1.5 size-1.5 rounded-full bg-uq-500 lg:hidden"
+                aria-hidden="true"
+              />
+              <span
+                class="flex size-9 shrink-0 items-center justify-center rounded-xl transition-colors lg:mt-0.5"
                 :class="service.id === active.id ? 'bg-uq-500 text-white' : 'bg-uq-50 text-uq-600 group-hover:bg-uq-100'"
               >
                 <UIcon
@@ -101,7 +99,14 @@ function discuss() {
                   class="size-5"
                 />
               </span>
-              <span class="min-w-0 flex-1">
+              <span
+                class="text-[0.6875rem] leading-tight font-medium text-navy-900 sm:text-xs lg:hidden"
+                aria-hidden="true"
+              >{{ service.shortName }}</span>
+              <span
+                class="hidden min-w-0 flex-1 lg:block"
+                aria-hidden="true"
+              >
                 <span class="block font-display leading-snug font-medium text-navy-900">{{ service.name }}</span>
                 <span
                   v-if="service.featured"

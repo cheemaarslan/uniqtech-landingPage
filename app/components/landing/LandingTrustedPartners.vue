@@ -1,8 +1,5 @@
 <script setup lang="ts">
 import { partners, trustedPartners } from '~/data/landing'
-
-// Split into rows of four so a divider can sit between rows, as in the design
-const rows = [trustedPartners.slice(0, 4), trustedPartners.slice(4)]
 </script>
 
 <template>
@@ -43,18 +40,15 @@ const rows = [trustedPartners.slice(0, 4), trustedPartners.slice(4)]
         </div>
       </div>
 
-      <!-- Other partners -->
-      <div class="mt-6">
-        <ul
-          v-for="(row, i) in rows"
-          :key="i"
-          class="grid grid-cols-2 gap-x-6 sm:grid-cols-4"
-          :class="i > 0 ? 'border-t border-navy-800/10' : ''"
-        >
+      <!-- Other partners: 2 per row on phones, 3 per row from tablets up.
+           Every logo has a top border and the list is pulled up 1px under a clipping wrapper,
+           so the first row's borders are hidden and a line shows only between rows. -->
+      <div class="mt-6 overflow-hidden">
+        <ul class="-mt-px grid grid-cols-2 sm:grid-cols-3">
           <li
-            v-for="partner in row"
+            v-for="partner in trustedPartners"
             :key="partner.name"
-            class="flex h-28 items-center justify-center px-2 sm:h-36"
+            class="flex h-28 items-center justify-center border-t border-navy-800/10 px-5 sm:h-36 sm:px-8"
           >
             <img
               :src="partner.logo"

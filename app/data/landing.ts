@@ -57,7 +57,7 @@ export const services: Service[] = [
     shortName: 'Waste',
     tagline: 'Smart bins that report when they are full',
     // Copy from SmartGen's Smart Bins solution page (smartgentech.net)
-    summary: 'SmartGen Smart Bins combine IoT sensors, GPS and AI to monitor waste levels in real time, so collection follows actual need instead of a fixed timetable.',
+    summary: 'UniqTech Smart Bins combine IoT sensors, GPS and AI to monitor waste levels in real time, so collection follows actual need instead of a fixed timetable.',
     points: [
       'IoT fill-level sensors with instant alerts',
       'Every bin on a live GIS map',
@@ -159,14 +159,14 @@ export const partners = {
 // lead: who leads the stage (shown as a small chip). Keep each text to one short line.
 export const processIntro = {
   title: 'From first site visit to long-term support',
-  text: 'UniqTech leads on the ground. SmartGen engineers the technology.'
+  text: 'UniqTech leads every stage, from the ground work to the technology.'
 }
 
 export const process: { title: string, text: string, lead: 'uniqtech' | 'smartgen' | 'both' }[] = [
   { title: 'Assess', text: 'We survey your sites and existing systems.', lead: 'uniqtech' },
-  { title: 'Design', text: 'SmartGen selects the hardware and software.', lead: 'smartgen' },
-  { title: 'Pilot', text: 'We prove it in one area first.', lead: 'both' },
-  { title: 'Deploy', text: 'We install, connect and train your team.', lead: 'both' },
+  { title: 'Design', text: 'UniqTech selects the hardware and software.', lead: 'uniqtech' },
+  { title: 'Pilot', text: 'We prove it in one area first.', lead: 'uniqtech' },
+  { title: 'Deploy', text: 'We install, connect and train your team.', lead: 'uniqtech' },
   { title: 'Support', text: 'We maintain, monitor and grow with you.', lead: 'uniqtech' }
 ]
 
@@ -198,10 +198,10 @@ export const teamwork = {
   title: 'One team, on site',
   text: 'Our engineers work side by side with your people, from the first survey to the day the system goes live.',
   image: '/images/team-field.webp',
-  imageAlt: 'The UniqTech and SmartGen team together at a toll facility',
+  imageAlt: 'The UniqTech team together at a toll facility',
   caption: { title: 'Our team in the field', text: 'Working together, on site' },
   points: [
-    { icon: 'i-lucide-users', title: 'Joint project team', text: 'UniqTech and SmartGen staff on every deployment.' },
+    { icon: 'i-lucide-users', title: 'Dedicated project team', text: 'UniqTech staff on every deployment.' },
     { icon: 'i-lucide-hard-hat', title: 'Hands-on installation', text: 'We install, test and commission on site.' },
     { icon: 'i-lucide-graduation-cap', title: 'Training for your staff', text: 'Your team learns to run the system before handover.' }
   ]
@@ -209,8 +209,6 @@ export const teamwork = {
 
 // Trusted partners strip. Logos copied from the SmartGenTech staging site.
 export const trustedPartners = [
-  { name: 'Oman Energy Association', logo: '/images/partners/opal.webp' },
-  { name: 'Logistics Sector Skills Unit', logo: '/images/partners/ola.webp' },
   { name: 'GreenBatt', logo: '/images/partners/greenbatt.webp' },
   { name: 'Factual', logo: '/images/partners/factual.webp' },
   { name: 'Vitronic', logo: '/images/partners/vitronic.webp' },

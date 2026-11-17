@@ -19,7 +19,7 @@ const [featured, ...rest] = projects
           Already running across the region
         </h2>
         <p class="mt-4 text-lg leading-relaxed text-navy-800/80">
-          SmartGen technology is in daily use on roads, toll networks and power sites. These are some of the projects behind it.
+          UniqTech Global Solutions systems are in daily use on roads, toll networks and power sites. These are some of the projects behind it.
         </p>
       </div>
 

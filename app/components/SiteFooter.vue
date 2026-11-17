@@ -24,18 +24,27 @@ function showService(id: string) {
           class="h-14 w-auto"
         >
         <p class="mt-6 max-w-sm leading-relaxed">
-          Intelligent transport, energy and waste solutions, delivered in partnership with SmartGen Technologies.
+          Intelligent transport, energy and waste solutions, delivered by UniqTech Global Solutions.
         </p>
         <div class="mt-6 flex items-center gap-3 text-sm">
           <span>In partnership with</span>
-          <img
-            src="/images/logos/smartgen.webp"
-            alt="SmartGen Technologies"
-            width="1024"
-            height="307"
-            loading="lazy"
-            class="h-7 w-auto brightness-0 invert"
+          <!-- White logo that turns to its brand colours on hover (smartgen.webp is the dark-background version) -->
+          <a
+            href="https://smartgentech.net/"
+            target="_blank"
+            rel="noopener"
+            aria-label="SmartGen Technologies (opens in a new tab)"
+            class="group -m-1.5 rounded-lg p-1.5 transition-colors hover:bg-white/5 focus-visible:outline-2 focus-visible:outline-uq-300"
           >
+            <img
+              src="/images/logos/smartgen.webp"
+              alt="SmartGen Technologies"
+              width="1024"
+              height="307"
+              loading="lazy"
+              class="h-7 w-auto brightness-0 invert transition duration-300 group-hover:scale-105 group-hover:brightness-100 group-hover:invert-0 group-focus-visible:brightness-100 group-focus-visible:invert-0"
+            >
+          </a>
         </div>
       </div>
 

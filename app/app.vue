@@ -2,8 +2,8 @@
 import { contact } from '~/data/landing'
 
 // ---- SEO and share previews (Google, WhatsApp, LinkedIn, Facebook, X) ----
-const title = 'UniqTech × SmartGen | Smart City Solutions in Oman'
-const description = 'UniqTech Global Solutions and SmartGen Technologies deliver intelligent transport, smart energy, smart waste, fleet management and software solutions in Oman.'
+const title = 'UniqTech Global Solutions | Smart City Solutions in Oman'
+const description = 'UniqTech Global Solutions delivers intelligent transport, smart energy, smart waste, fleet management and software solutions in Oman.'
 
 // Share apps need absolute URLs. Prefer the configured live address, else the address this page was requested on.
 const { siteUrl } = useRuntimeConfig().public

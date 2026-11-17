@@ -50,7 +50,7 @@ watch(open, (isOpen) => {
 
           <div class="relative px-8 pt-2 pb-8">
             <p class="text-xs font-semibold tracking-[0.2em] text-uq-300 uppercase">
-              UniqTech × SmartGen
+              UniqTech Global Solutions
             </p>
             <p class="mt-3 heading-card">
               One team, from survey to go-live
