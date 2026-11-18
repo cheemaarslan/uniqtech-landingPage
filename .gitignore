@@ -22,3 +22,6 @@ logs
 .env.*
 !.env.example
 .vscode/sftp.json
+
+# Browser-testing screenshots
+.playwright-mcp/

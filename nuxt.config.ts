@@ -12,8 +12,9 @@ export default defineNuxtConfig({
         { name: 'theme-color', content: '#132B47' }
       ],
       link: [
-        { rel: 'icon', type: 'image/png', href: '/images/logos/uniqtech.png' },
-        { rel: 'apple-touch-icon', href: '/images/logos/uniqtech.png' },
+        { rel: 'icon', type: 'image/png', sizes: '512x512', href: '/favicon.png' },
+        { rel: 'icon', href: '/favicon.ico', sizes: 'any' },
+        { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
         { rel: 'preload', as: 'image', type: 'image/webp', href: '/images/hero-smart-city.webp', fetchpriority: 'high' }
       ]
     }

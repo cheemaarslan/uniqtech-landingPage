@@ -45,24 +45,26 @@ onMounted(() => {
       class="timeline mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
       :class="{ 'is-ready': ready, 'is-visible': visible }"
     >
-      <div class="grid gap-6 lg:grid-cols-2 lg:gap-16">
+      <!-- Tablets: intro and call to action on the left, timeline on the right. Large screens stack everything again. -->
+      <div class="md:grid md:grid-cols-2 md:grid-rows-[1fr_auto_auto_1fr] md:gap-x-12 lg:block">
+      <div class="grid gap-4 sm:gap-6 md:col-start-1 md:row-start-2 lg:grid-cols-2 lg:gap-16">
         <h2
           id="process-title"
-          class="heading-section"
+          class="heading-section text-balance md:text-4xl lg:text-[2.75rem]"
         >
           {{ processIntro.title }}
         </h2>
-        <p class="self-end text-lg leading-relaxed text-white/75">
+        <p class="self-end text-base leading-relaxed text-white/75 sm:text-lg">
           {{ processIntro.text }}
         </p>
       </div>
 
       <!-- A real sequence: a vertical timeline on small screens, a horizontal one on large screens -->
-      <ol class="mt-16 lg:grid lg:grid-cols-5 lg:gap-x-8">
+      <ol class="mt-12 md:col-start-2 md:row-span-4 md:row-start-1 md:mt-0 lg:mt-16 lg:grid lg:grid-cols-5 lg:gap-x-8">
         <li
           v-for="(step, index) in process"
           :key="step.title"
-          class="step group relative flex gap-5 pb-10 last:pb-0 lg:block lg:pb-0"
+          class="step group relative flex gap-4 pb-8 last:pb-0 sm:gap-5 sm:pb-10 lg:block lg:pb-0"
           :style="{ '--d': `${index * 0.35}s` }"
         >
           <span
@@ -74,22 +76,25 @@ onMounted(() => {
             {{ index + 1 }}
           </span>
 
-          <div class="body flex-1 lg:mt-6">
-            <p class="inline-flex items-center gap-2 rounded-full bg-white/8 px-3 py-1 text-xs font-medium text-white/85">
-              <span class="flex -space-x-1">
-                <span
-                  v-for="dot in leads[step.lead].dots"
-                  :key="dot"
-                  class="size-2.5 rounded-full ring-2 ring-navy-900"
-                  :class="dot"
-                />
-              </span>
-              {{ leads[step.lead].label }}
-            </p>
-            <h3 class="mt-3 heading-card transition-colors duration-300 group-hover:text-uq-200">
-              {{ step.title }}
-            </h3>
-            <p class="mt-1.5 leading-relaxed text-white/75">
+          <div class="body min-w-0 flex-1 lg:mt-6">
+            <!-- Small screens: title and lead chip share one row, centred on the number. Large screens: chip above title. -->
+            <div class="flex min-h-11 flex-wrap items-center gap-x-3 gap-y-1.5 lg:min-h-0 lg:flex-col lg:items-start lg:gap-3">
+              <h3 class="heading-card transition-colors duration-300 group-hover:text-uq-200">
+                {{ step.title }}
+              </h3>
+              <p class="inline-flex items-center gap-2 rounded-full bg-white/8 px-2.5 py-0.5 text-xs font-medium text-white/85 lg:order-first lg:px-3 lg:py-1">
+                <span class="flex -space-x-1">
+                  <span
+                    v-for="dot in leads[step.lead].dots"
+                    :key="dot"
+                    class="size-2.5 rounded-full ring-2 ring-navy-900"
+                    :class="dot"
+                  />
+                </span>
+                {{ leads[step.lead].label }}
+              </p>
+            </div>
+            <p class="mt-1 leading-relaxed text-white/75 lg:mt-1.5">
               {{ step.text }}
             </p>
           </div>
@@ -97,7 +102,7 @@ onMounted(() => {
       </ol>
 
       <div
-        class="cta mt-14 flex flex-col gap-5 rounded-3xl bg-white/5 p-6 ring-1 ring-white/10 sm:px-8 md:flex-row md:items-center md:justify-between"
+        class="cta mt-12 flex flex-col gap-5 rounded-3xl bg-white/5 p-6 ring-1 ring-white/10 sm:mt-14 sm:px-8 md:col-start-1 md:row-start-3 md:mt-10 md:self-start lg:mt-14 lg:flex-row lg:items-center lg:justify-between"
         :style="{ '--d': `${process.length * 0.35 + 0.3}s` }"
       >
         <p class="heading-card">
@@ -105,11 +110,12 @@ onMounted(() => {
         </p>
         <UButton
           size="xl"
-          class="shrink-0 self-start rounded-full md:self-auto"
+          class="shrink-0 self-start rounded-full lg:self-auto"
           @click="openContact()"
         >
           Book a site assessment
         </UButton>
+      </div>
       </div>
     </div>
   </section>

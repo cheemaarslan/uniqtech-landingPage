@@ -96,8 +96,8 @@ export const services: Service[] = [
       'Urban planning and resource modelling tools',
       'Secure cloud hosting and system integration'
     ],
-    image: '/images/service-software.webp',
-    imageAlt: 'Analytics dashboard showing city performance data',
+    image: '/images/service-software-cloud.webp?v=2',
+    imageAlt: 'Hand presenting connected cloud, server and device icons in a data centre',
     icon: 'i-lucide-layout-dashboard'
   }
 ]
